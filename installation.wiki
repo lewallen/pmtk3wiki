@@ -43,10 +43,8 @@ Note: Pmtk3 has only been tested on Matlab 2009a or newer. It is possible it wil
 == Automatic downloads ==
 
 PMTK3 demos use various datasets Each data set is automatically downloaded from 
-<a href="https://github.com/probml/pmtkdata">pmtkdata</a>
- by the 
-<a href="https://github.com/probml/pmtk3/blob/master/pmtkTools/dataTools/loadData.m">loadData.m</a>
- command whenever a demo needs them. (If this fails for some reason, check that you are not shadowing pmtk's loadData command by mistake; to test this, type 'which loadData -all' inside Matlab to see which one is first on your path.) 
+<a href="https://github.com/probml/pmtkdata">pmtkdata</a> by the 
+<a href="https://github.com/probml/pmtk3/blob/master/pmtkTools/dataTools/loadData.m">loadData.m</a> command whenever a demo needs them. (If this fails for some reason, check that you are not shadowing pmtk's loadData command by mistake; to test this, type 'which loadData -all' inside Matlab to see which one is first on your path.) 
 
 Once downloaded, the files are stored locally in the 'pmtkdataCopy' directory and added to your path, so next time the local copy is used) Each data folder should have been individually zipped up already. If you prefer, you can download all the data at once using downloadAllDatam. _This will allow you to run pmtk3 demos without needing internet access_. In this case, you should edit the  config-local.txt file to specify the location of the data directory. This will be added to your path by initPmtk3, so no more downloading will occur. 
 
@@ -64,27 +62,20 @@ for details on recompiling them, if necessary.
 == Libdai interface ==
 
 PMTK3 includes an optional interface to the
-<a href="http://people.kyb.tuebingen.mpg.de/jorism/libDAI/">libdai</a> graphical model inference package, written in C++ by Joris Mooij. We have compiled windows (32bit and 64bit), and (ubuntu) linux 32 bit versions of libdai, which are included in  pmtkSupport, and hence automatically available. Users of other systems will need to compile libdai manually. You can find libdai's installation instructions <a href="http://people.kyb.tuebingen.mpg.de/jorism/libDAI/doc/build.html">here</a>, and our notes on compiling libdai for windows 
-<a href="https://github.com/probml/pmtk3/wiki/compilingLibdai">here</a>.
- Once compiled, add the *.mex* files from libdai's matlab subfolder to the pmtkSupport libdai directory. If you generate mex files for other OS's, please send them to us so that we can include them for others to use. 
+<a href="http://people.kyb.tuebingen.mpg.de/jorism/libDAI/">libdai</a> graphical model inference package, written in C++ by Joris Mooij. We have compiled windows (32bit and 64bit), and (ubuntu) linux 32 bit versions of libdai, which are included in  pmtkSupport, and hence automatically available. Users of other systems will need to compile libdai manually. You can find libdai's installation instructions <a href="http://people.kyb.tuebingen.mpg.de/jorism/libDAI/doc/build.html">here</a>, and our notes on compiling libdai for windows <a href="https://github.com/probml/pmtk3/wiki/compilingLibdai">here</a>. Once compiled, add the *.mex* files from libdai's matlab subfolder to the pmtkSupport libdai directory. If you generate mex files for other OS's, please send them to us so that we can include them for others to use. 
 
 == Graphviz == 
 
-The
-<a href="https://github.com/graphviz4matlab/graphviz4matlab">graphViz4Matlab</a>
-package, which is included in pmtkSupport, can be used to visualize (and edit) network structures. For best results, you should install the latest (free) version of 
-<a href="http://www.graphviz.org/">Graphviz</a>. This feature requires you to have Matlab 2008a or newer. It is not necessary to have graphviz to use pmtk, but it is useful if you want to visualize the results of graphical model structure learning, and/or run some of the demos. After installation, modify PMTKgvizPath in your config.txt file, and/or add this directory to your 
-path using
-<a href="https://github.com/probml/pmtk3/blob/master/matlabTools/metaTools/addtosystempath.m">addtosystempath.m</a>.
- On windows systems the file  is usually stored at `C:\program files\Graphviz2.26\bin`. Ubuntu/Debian users can install graphviz by typing `sudo apt-get install graphviz` at the command prompt. 
+The <a href="https://github.com/graphviz4matlab/graphviz4matlab">graphViz4Matlab</a>
+package, which is included in pmtkSupport, can be used to visualize (and edit) network structures. For best results, you should install the latest (free) version of  <a href="http://www.graphviz.org/">Graphviz</a>. This feature requires you to have Matlab 2008a or newer. It is not necessary to have graphviz to use pmtk, but it is useful if you want to visualize the results of graphical model structure learning, and/or run some of the demos. After installation, modify PMTKgvizPath in your config.txt file, and/or add this directory to your  path using
+<a href="https://github.com/probml/pmtk3/blob/master/matlabTools/metaTools/addtosystempath.m">addtosystempath.m</a>.  On windows systems the file  is usually stored at `C:\program files\Graphviz2.26\bin`. Ubuntu/Debian users can install graphviz by typing `sudo apt-get install graphviz` at the command prompt. 
 
 
 == Octave issues ==
 
 PMTK is only about 75% octave compatible. If you run into problems in Octave, check out
 <a href="http://code.google.com/p/yagtom/wiki/Octave">here</a>
-or
-<a href="https://github.com/probml/pmtk3/wiki/mexFiles">here</a> for mex files,as well as the points below. 
+or <a href="https://github.com/probml/pmtk3/wiki/mexFiles">here</a> for mex files,as well as the points below. 
 
 Octave does not always seem to include the current working directory on the path. You may need to type e.g. `addpath('C:\pmtk3')`, before typing `initPmtk3`. It also doesn't seem to like spaces in file paths. 
 
@@ -103,19 +94,15 @@ You may get this warning message
 
 You can safely ignore this. (It just means there are two versions of the executable on the path: .mexw32 is the 32 bit Windows version for new versions of Matlab, and .dll is for older versions of Matlab.)
 
-  * You may get this warning message
+You may get this warning message
 
    cannot run lassoPathProstateClassif without glmnet; skipping
 
 This just means you don't have a glmnet binary on your machine.
 
-  * You may get this message or something similar:
+You may get this message or something similar:
 
    Warning: from glmnet fortran code - Convergence for 33th lambda value not reached after maxit=100
-iterations; solutions for larger lambdas returned
+   iterations; solutions for larger lambdas returned
 
 Again, you can safely ignore this. (It is caused by the glmnet package when it attempts to compute the full regularization path. This functionality is not central to anything used by pmtk.)
-
-
-
- 
