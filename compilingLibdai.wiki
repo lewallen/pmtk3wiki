@@ -16,9 +16,9 @@ libai version 0.2.6, on windows Vista 32bit, (and windows 7 64 bit) with boost 1
 
 (6) Run this command to build the boost libraries:
 
-{{{
-bjam --with-graph --with-math --with-program_options --with-serialization --with-test link=static runtime-link=shared
-}}}
+
+  bjam --with-graph --with-math --with-program_options --with-serialization --with-test link=static runtime-link=shared
+
 
 (7)  Download libDAI from http://people.kyb.tuebingen.mpg.de/jorism/libDAI
 and unzip it to say C:\boost\libDAI-0.2.5. _Version 2.6 has been tested as well._
@@ -26,25 +26,25 @@ and unzip it to say C:\boost\libDAI-0.2.5. _Version 2.6 has been tested as well.
 
 (8) Rename the "Makefile.WINDOWS" file, "Makefile.conf" and make the following changes:
 
-{{{
-CCINC=-Iinclude -I"C:\boost\boost_1_43_0"
-BOOSTLIBS_PO=/LIBPATH:"C:\boost\boost_1_43_0\stage\lib"
-BOOSTLIBS_UTF=/LIBPATH:"C:\boost\boost_1_43_0\stage\lib"
-CCLIB=/LIBPATH:"C:\Program Files\Microsoft Visual Studio 9.0\VC\ATLMFC\LIB" /LIBPATH:"C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB" /LIBPATH:"C:\Program Files\Microsoft SDKs\Windows\v6.0A\lib"
-MATLABDIR="C:\Program Files\MATLAB\R2010a"
-MEX="C:\Program Files\MATLAB\R2010a\bin\mex"
-}}}
 
-(9) Open up the visual studio command prompt, (not the regular windows cmd), change directories to the \libDAI-0.2.5 directory and type:
-{{{
-SET PATH=%PATH%;"C:\Program Files\GnuWin32\bin"
-}}}
+  CCINC=-Iinclude -I"C:\boost\boost_1_43_0"
+  BOOSTLIBS_PO=/LIBPATH:"C:\boost\boost_1_43_0\stage\lib"
+  BOOSTLIBS_UTF=/LIBPATH:"C:\boost\boost_1_43_0\stage\lib"
+  CCLIB=/LIBPATH:"C:\Program Files\Microsoft Visual Studio 9.0\VC\ATLMFC\LIB" /LIBPATH:"C:\Program   Files\Microsoft Visual Studio 9.0\VC\LIB" /LIBPATH:"C:\Program Files\Microsoft SDKs\Windows\v6.0A\lib"
+MATLABDIR="C:\Program Files\MATLAB\R2010a"
+  MEX="C:\Program Files\MATLAB\R2010a\bin\mex"  
+
+
+
+(9) Open up the visual studio command prompt, (not the regular windows cmd), change directories to the libDAI-0.2.5 directory and type:
+
+  SET PATH=%PATH%;"C:\Program Files\GnuWin32\bin"
+
 to add the make directory to the path, (for some reason the visual studio cmd prompt ignores the system path)
 
 and then type
-{{{
-make
-}}}
+
+  make
 
 If all you want is the matlab mex interface, (sufficient for calling libdai from withing Matlab) then you can save a lot of time and trouble by just typing {{{make matlabs}}}, (with the s). If so, skip step 10.
 
@@ -56,12 +56,12 @@ two stage compilation; I didn't try doing it all at once).
 (11) 
 
 Open Matlab,  and test out their example:
-{{{
-cd path_to_libdai/matlab
-[psi] = dai_readfg ('../tests/alarm.fg');
-[logZ,q,md,qv,qf] = dai (psi, 'JTREE', '[updates=HUGIN,verbose=0]')
-[logZ,q,md,qv,qf] = dai (psi, 'BP', '[updates=SEQMAX,tol=1e-9,maxiter=10000,logdomain=0]')
-}}}
+
+  cd path_to_libdai/matlab
+ [psi] = dai_readfg ('../tests/alarm.fg');
+ [logZ,q,md,qv,qf] = dai (psi, 'JTREE', '[updates=HUGIN,verbose=0]')
+ [logZ,q,md,qv,qf] = dai (psi, 'BP', '[updates=SEQMAX,tol=1e-9,maxiter=10000,logdomain=0]')
+
 Note the "tests" directory unlike the erroneous "examples" path in their documentation.
 
 (12)
@@ -77,6 +77,5 @@ to change boost-build.jam.
 == Debugging ==
 To add mex debug info to the compiled files add -g to the MEXFLAGS property in Makefile.conf. This allows you to debug segfaults as per these [http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_external/f32489.html#f18756 MATLAB instructions]. If you are recompiling, make sure to first delete the .mex files.
 
-{{{
-MEXFLAGS:=-DWINDOWS -DNOMINMAX -g
-}}}
+
+  MEXFLAGS:=-DWINDOWS -DNOMINMAX -g
