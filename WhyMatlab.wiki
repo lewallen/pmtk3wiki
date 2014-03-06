@@ -12,7 +12,7 @@ We did not choose R for several reasons: while R has many useful statistical pac
 
 vs
 
-   A = matrix(c(6,2,0,2,6,0,0,0,36), nrow=3))
+   A = matrix(c(6,2,0,2,6,0,0,0,36), nrow=3)
    res = eigen(A, symmetric=T)
    AA = res$vec %*% diag(res$val) %*% t(res$vec)
 
