@@ -9,4 +9,4 @@ publishTutorial.m</a>.
 
 <a href="https://probml.github.io/pmtk3/docs/tutorial/html/tutLVM.html"> Latent variable models</a> (mixture models, PCA, HMMs, deep belief nets, etc.)
 
-<a href="https://probml.githib.io/pmtk3/docs/tutorial/html/tutGM.html"> Graphical models</a> (Bayes nets, MRFs, CRFs, etc.)
+<a href="https://probml.github.io/pmtk3/docs/tutorial/html/tutGM.html"> Graphical models</a> (Bayes nets, MRFs, CRFs, etc.)
